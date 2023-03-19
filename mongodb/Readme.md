@@ -12,6 +12,13 @@ Welcome to MongoDB Practice
                 <li><a href="#common-backend-technologies-and-their-frameworks">Common Backend Technologies and Their Frameworks</a></li>
             </ul>
         </li>
+        <li>
+            <a href="#getting-started">Getting Started</a>
+            <ul>
+                <li><a href="#downloading-and-installing">Downloading and Installing</a></li>
+                <li><a href="#terminology">Terminology</a></li>
+            </ul>
+        </li>
     </ol>
 </details>
 
@@ -25,7 +32,7 @@ MongoDB is a **backend technology**, specifically a database management system, 
 
 <p align="right">(<a href="#mongodb">back to top</a>)</p>
 
-### Common Operations of MongoDB
+## Common Operations of MongoDB
 
 - Storing Data
 - Retrieving Data
@@ -36,7 +43,7 @@ Overall, **CRUD (Create, Read, Update, Delete)** operations are fundamental to w
 
 <p align="right">(<a href="#mongodb">back to top</a>)</p>
 
-### Common Backend Technologies and Their Frameworks
+## Common Backend Technologies and Their Frameworks
 
 Several common backend technologies and their associated frameworks for MongoDB are listed below:
 | Backend Technology | Frameworks |
@@ -44,3 +51,28 @@ Several common backend technologies and their associated frameworks for MongoDB 
 | Node.js | Express.js |
 | Python | Flask, Django |
 | PHP | Laravel |
+
+# Getting Started
+
+In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0` and `MongoDB Command Line Database Tools v100.7.0`
+
+## Downloading and Installing
+
+- **MongoDB Community Edition**
+  - [MongoDB Community Server](https://www.mongodb.com/try/download/community)
+- **Tools**
+  - [MongoDB Shell](https://www.mongodb.com/try/download/shell)
+  - [MongoDB Command Line Database Tools](https://www.mongodb.com/try/download/database-tools)
+
+After installing, add MongoDB binaries to the System PATH `C:\Program Files\MongoDB\Server\6.0\bin`. Now open terminal and type `mongosh`. If everything is okay, you should see a version number. Now you are ready to go.
+
+## Terminology
+
+There are four main basic terminology exists that need to know before move ahead: `database`, `collections`, `documents`, and `fields`.
+
+- `Database`: holds `collections`.
+- `Collections`: holds `documents`. It is like a table in relational database.
+- `Documents`: holds `fields` and their associate `value`.
+- `Fields`: Each key-value pair represents a field in the document.
+
+<img src="https://www.mongodb.com/docs/manual/images/crud-annotated-document.bakedsvg.svg" alt="document and field example"/>
