@@ -106,7 +106,7 @@ Newly created empty collection database will not show.
 </details>
 
 <details>
-      <summary>3. Create or Access a database named `studentdb`.</summary>
+      <summary>3. Create or Access a database named <code>studentdb</code>.</summary>
 
 ```js
 use studentdb
@@ -135,7 +135,7 @@ cls;
 </details>
 
 <details>
-      <summary>6. Show all the collections in `studentdb` database.</summary>
+      <summary>6. Show all the collections in <code>studentdb</code> database.</summary>
 
 ```js
 show collections
