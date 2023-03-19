@@ -17,9 +17,11 @@ Welcome to MongoDB Practice
             <ul>
                 <li><a href="#downloading-and-installing">Downloading and Installing</a></li>
                 <li><a href="#terminology">Terminology</a></li>
+                <li><a href="#basic-commands">Basic Commands</a></li>
             </ul>
         </li>
     </ol>
+
 </details>
 
 <!-- ABOUT Mongodb -->
@@ -52,10 +54,12 @@ Several common backend technologies and their associated frameworks for MongoDB 
 | Python | Flask, Django |
 | PHP | Laravel |
 
+<p align="right">(<a href="#mongodb">back to top</a>)</p>
 # Getting Started
 
 In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0` and `MongoDB Command Line Database Tools v100.7.0`
 
+<p align="right">(<a href="#mongodb">back to top</a>)</p>
 ## Downloading and Installing
 
 - **MongoDB Community Edition**
@@ -66,6 +70,7 @@ In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0`
 
 After installing, add MongoDB binaries to the System PATH `C:\Program Files\MongoDB\Server\6.0\bin`. Now open terminal and type `mongosh`. If everything is okay, you should see a version number. Now you are ready to go.
 
+<p align="right">(<a href="#mongodb">back to top</a>)</p>
 ## Terminology
 
 There are four main basic terminology exists that need to know before move ahead: `database`, `collections`, `documents`, and `fields`.
@@ -76,3 +81,75 @@ There are four main basic terminology exists that need to know before move ahead
 - `Fields`: Each key-value pair represents a field in the document.
 
 <img src="https://www.mongodb.com/docs/manual/images/crud-annotated-document.bakedsvg.svg" alt="document and field example"/>
+<p align="right">(<a href="#mongodb">back to top</a>)</p>
+
+## Basic Commands
+
+<details>
+      <summary>1. What should you write in the terminal to enter mongosh shell?</summary>
+
+```js
+mongosh;
+```
+
+</details>
+
+<details>
+      <summary>2. Show all the databases.</summary>
+
+```js
+show dbs
+```
+
+Newly created empty collection database will not show.
+
+</details>
+
+<details>
+      <summary>3. Create or Access a database named `studentdb`.</summary>
+
+```js
+use studentdb
+```
+
+if `studentdb` exists, you will get accessed otherwise it will create a new one and give access.
+
+</details>
+
+<details>
+      <summary>4. Get the current database name.</summary>
+
+```js
+db;
+```
+
+</details>
+
+<details>
+      <summary>5. Clear terminal.</summary>
+
+```js
+cls;
+```
+
+</details>
+
+<details>
+      <summary>6. Show all the collections in `studentdb` database.</summary>
+
+```js
+show collections
+```
+
+If any collection exists, it will show, otherwise it shows a blank line.
+
+</details>
+
+<details>
+      <summary>7. Insert some data.</summary>
+
+```js
+mongosh;
+```
+
+</details>
