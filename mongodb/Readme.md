@@ -1,6 +1,8 @@
-Welcome to MongoDB Practice
-
 ###### MongoDB
+<div align="center">
+    <h1>Welcome to MongoDB Practice</h1>
+</div>
+
 
 <details>
     <summary>Table of Contains</summary>
@@ -32,7 +34,9 @@ MongoDB is a popular open-source **document-oriented database** system that uses
 
 MongoDB is a **backend technology**, specifically a database management system, that is used to store and manage data for web and mobile applications. It is typically accessed and manipulated using a backend programming language such as Node.js, Express.js, PHP, or Python etc. Its primary role is to handle the storage and retrieval of data on the server-side, making it a backend technology.
 
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ## Common Operations of MongoDB
 
@@ -43,7 +47,9 @@ MongoDB is a **backend technology**, specifically a database management system, 
 
 Overall, **CRUD (Create, Read, Update, Delete)** operations are fundamental to working with databases, including MongoDB. These operations allow you to create, read, update, and delete data as needed, providing a basic set of tools for managing data stored in MongoDB collections.
 
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ## Common Backend Technologies and Their Frameworks
 
@@ -54,13 +60,17 @@ Several common backend technologies and their associated frameworks for MongoDB 
 | Python | Flask, Django |
 | PHP | Laravel |
 
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 # Getting Started
 
 In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0` and `MongoDB Command Line Database Tools v100.7.0`
 
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ## Downloading and Installing
 
@@ -72,19 +82,30 @@ In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0`
 
 After installing, add MongoDB binaries to the System PATH `C:\Program Files\MongoDB\Server\6.0\bin`. Now open terminal and type `mongosh`. If everything is okay, you should see a version number. Now you are ready to go.
 
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ## Terminology
 
-There are four main basic terminology exists that need to know before move ahead: `database`, `collections`, `documents`, and `fields`.
+There are four main basic terminologies exists that need to know before move ahead: `database`, `collections`, `documents`, and `fields`.
 
-- `Database`: holds `collections`.
-- `Collections`: holds `documents`. It is like a table in relational database.
-- `Documents`: holds `fields` and their associate `value`.
-- `Fields`: Each key-value pair represents a field in the document.
+- `Database`: Holds `collections`. MongoDB database server can store multiple databases.
+- `Collections`: Holds `documents` set. It is like a table in relational database.
+- `Documents`: Holds `fields` and their associate `value`.
+- `Fields`: Fields carry a value in the form of `string`, `number`, `boolean`, `array`, or even an `object`.
+
+> Several key-value pairs constitute a document familiar as a unit of mongoDB database.
 
 <img src="https://www.mongodb.com/docs/manual/images/crud-annotated-document.bakedsvg.svg" alt="document and field example"/>
-<p align="right">(<a href="#mongodb">back to top</a>)</p>
+
+Some important terminologies can be learnt if you wish: `_id`
+
+- `_id`: The unique field of the mongoDB database system that carries an auto generated id if it is not given while creating a document. It is like a primary key.
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ## Basic Commands
 
@@ -189,3 +210,7 @@ exit;
 ```
 
 </details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
