@@ -163,4 +163,29 @@ db.students.insertOne({name: "John", age: 12, class: "V", group: "General"})
 
 </details>
 
+<details>
+      <summary>8. Show the newly added fields and their value.</summary>
 
+```js
+db.students.find();
+```
+
+</details>
+
+<details>
+      <summary>9. Let's say, we do not want this database. Thus, can you delete the entire database you've just created?</summary>
+
+```js
+db.dropDatabase();
+```
+
+</details>
+
+<details>
+      <summary>10. Exit the mongosh shell.</summary>
+
+```js
+exit;
+```
+
+</details>
