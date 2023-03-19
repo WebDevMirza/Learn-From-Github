@@ -1,8 +1,8 @@
 ###### MongoDB
+
 <div align="center">
     <h1>Welcome to MongoDB Practice</h1>
 </div>
-
 
 <details>
     <summary>Table of Contains</summary>
@@ -20,6 +20,12 @@
                 <li><a href="#downloading-and-installing">Downloading and Installing</a></li>
                 <li><a href="#terminology">Terminology</a></li>
                 <li><a href="#basic-commands">Basic Commands</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#mongodb-crud-operations">MongoDB CRUD Operations</a>
+            <ul>
+               <li><a href="#insert-documents">Insert Documents</a></li>
             </ul>
         </li>
     </ol>
@@ -208,6 +214,93 @@ db.dropDatabase();
 ```js
 exit;
 ```
+
+</details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+# MongoDB CRUD Operations
+
+CRUD stands for Create, Read, Update, and Delete, which are the four basic operations performed on data in a database like mongoDB. By performing these operations, you can create, retrieve, modify, and delete data in a structured way, making it easier to build robust and scalable applications.
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+## Insert Documents
+
+We can manually insert data into a MongoDB collection using the `insertOne()` or `insertMany()` methods in the MongoDB shell or through a MongoDB driver in our application code. In both cases, if there is no collection exists before, it will create a new collection.
+
+- `insertOne()`: This can create only one document at a time with one or several key-value pairs.
+
+- `insertMany()`: This can take more than one documents in the form of an array.
+
+> If no `ID` is provided, it creates automatically in both cases.
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+### Practice
+
+<details>
+      <summary>1. Insert the following table data in <code>students</code> collection. Add the first two documents by using <code>insertOne()</code> method, and then using <code>insertMany()</code> method for the rest.</summary>
+      
+| name      | age | class | group   |
+|-----------|-----|-------|---------|
+| John      | 12  | V     | general |
+| Olivia    | 11  | IV    | general |
+| Noah      | 12  | V     | general |
+| Charlotte | 15  | VIII  | general |
+| Amelia    | 16  | IX    | science |
+
+```js
+db.students.insertOne({name: "John", age: 12, class: "V", group: "general"})
+
+db.students.insertOne({name: "Olivia", age: 11, class: "IV" group: "general"})
+
+db.students.insertMany([
+      {name: "Noah", age: 12, class: "V", group: "general"},
+      {name: "Charlotte", age:15, class: "VII", group: "general"},
+      {name: "Amelia", age: 16, class: "IX", group: "science"}])
+
+```
+
+</details>
+
+<details>
+      <summary>2. Insert some data by using the following json object.</summary>
+
+```json
+{
+  "name": "John Smith",
+  "age": 35,
+  "email": "john.smith@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip": "12345"
+  },
+  "hobbies": ["reading", "traveling", "sports"],
+  "isActive": true
+}
+```
+
+```js
+db.students.insertOne({
+  name: "John Smith",
+  age: 18,
+  email: "sample@example.com",
+  address: { street: "123 Main St", city: "Anytown", state: "CA", zip: 12345 },
+  hobbies: ["reading", "traveling", "sports"],
+  isActive: true,
+});
+```
+
+> We can populate data into a collection in the form of `string`, `number`, `boolean`, `array`, `object` etc.
 
 </details>
 
