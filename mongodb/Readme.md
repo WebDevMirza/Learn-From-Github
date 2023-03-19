@@ -55,11 +55,13 @@ Several common backend technologies and their associated frameworks for MongoDB 
 | PHP | Laravel |
 
 <p align="right">(<a href="#mongodb">back to top</a>)</p>
+
 # Getting Started
 
 In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0` and `MongoDB Command Line Database Tools v100.7.0`
 
 <p align="right">(<a href="#mongodb">back to top</a>)</p>
+
 ## Downloading and Installing
 
 - **MongoDB Community Edition**
@@ -71,6 +73,7 @@ In this article, I use `MongoDB Community Server v6.0.5`, `MongoDB Shell v1.8.0`
 After installing, add MongoDB binaries to the System PATH `C:\Program Files\MongoDB\Server\6.0\bin`. Now open terminal and type `mongosh`. If everything is okay, you should see a version number. Now you are ready to go.
 
 <p align="right">(<a href="#mongodb">back to top</a>)</p>
+
 ## Terminology
 
 There are four main basic terminology exists that need to know before move ahead: `database`, `collections`, `documents`, and `fields`.
@@ -101,7 +104,7 @@ mongosh;
 show dbs
 ```
 
-Newly created empty collection database will not show.
+> Newly created empty collection database will not show.
 
 </details>
 
@@ -112,7 +115,7 @@ Newly created empty collection database will not show.
 use studentdb
 ```
 
-if `studentdb` exists, you will get accessed otherwise it will create a new one and give access.
+> if `studentdb` exists, you will get accessed otherwise it will create a new one and give access.
 
 </details>
 
@@ -141,15 +144,23 @@ cls;
 show collections
 ```
 
-If any collection exists, it will show, otherwise it shows a blank line.
+> If any collection exists, it will show, otherwise it shows a blank line.
 
 </details>
 
 <details>
-      <summary>7. Insert some data.</summary>
-
+      <summary>7. Insert some data: <code>students</code> as a collection, and the following table data.</summary>
+      
+| name | age | class | group   |
+|------|-----|-------|---------|
+| John | 12  | V     | General |
+      
 ```js
-mongosh;
+db.students.insertOne({name: "John", age: 12, class: "V", group: "General"})
 ```
 
+> Now we can notice a collection named `students` by running `show collections` as we just created a new document with four fields.
+
 </details>
+
+
