@@ -342,6 +342,44 @@ db.students.insertMany([
 
 </details>
 
+<details>
+      <summary>4. In the following table, there is an empty space in the field name <code>previous exam</code> and <code>next exam</code>. How can you deal with it when you entry it into a collection?</summary>
+      
+| name | class | previous exam | next exam    |
+|------|-------|---------------|--------------|
+| Bob  | XII   | passed        | no exam      |
+| Lee  | XII   | failed        | 2 days later |
+
+> **Hints:** Put the field name between two `"` marks.
+
+```js
+db.students.insertMany([
+  { name: "Bob", class: "XII", "previous exam": "passed", "next exam": "no exam" },
+  { name: "Lee", class: "XII", "previous exam": "failed", "next exam": "2 days later" },
+]);
+```
+
+</details>
+
+<details>
+      <summary>5. We can use of dot notation in mongoDB for inserting values. Use that dot notation system to insert the following table.</summary>
+
+| name | class | address                                    |
+| ---- | ----- | ------------------------------------------ |
+| Bob  | XII   | street: 123 Main Street,<br>city: New York |
+
+```js
+db.students.insertOne({ name: "Bob", class: "XII", "address.street": "123 Main Street", "address.city": "New York" });
+```
+
+> I dislike this method. I am very comfortable in the following way:
+
+```js
+db.students.insertOne({ name: "Bob", class: "XII", address: { street: "123 Main Street", city: "New York" } });
+```
+
+</details>
+
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
