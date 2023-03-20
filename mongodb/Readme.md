@@ -25,8 +25,14 @@
         <li>
             <a href="#mongodb-crud-operations">MongoDB CRUD Operations</a>
             <ul>
-               <li><a href="#insert-documents">Insert Documents</a></li>
-            </ul>
+               <li>
+                    <a href="#insert-documents">Insert Documents</a>
+                    <ul>
+                        <li><a href="#practice">Practice</a></li>
+                        <li><a href="#advanced-practice">Advanced Practice</a></li>
+                    </ul>
+               </li>
+            </ul>         
         </li>
     </ol>
 
@@ -376,6 +382,17 @@ db.students.insertOne({ name: "Bob", class: "XII", "address.street": "123 Main S
 
 ```js
 db.students.insertOne({ name: "Bob", class: "XII", address: { street: "123 Main Street", city: "New York" } });
+```
+
+</details>
+
+### Advanced Practice
+
+<details>
+    <summary>advanced tropics</summary>
+
+```js
+pa po
 ```
 
 </details>
