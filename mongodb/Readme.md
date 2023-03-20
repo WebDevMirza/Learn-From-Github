@@ -29,6 +29,11 @@
                     <a href="#insert-documents">Insert Documents</a>
                     <ul>
                         <li><a href="#practice">Practice</a></li>
+                    </ul>
+               </li>
+               <li>
+                    <a href="#insert-documents-by-importing-files">Insert Documents by Importing Files</a>
+                    <ul>
                         <li><a href="#advanced-practice">Advanced Practice</a></li>
                     </ul>
                </li>
@@ -385,6 +390,48 @@ db.students.insertOne({ name: "Bob", class: "XII", address: { street: "123 Main 
 ```
 
 </details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+### Insert Documents by Importing Files
+
+One of the famous processes that can populate documents inside a collection of a database is to implement `mongoimport`. `mongoimport` must be run from the system command line, not from `mongosh` shell. `Extended JSON`, `CSV`, or `TSV` files can be imported by using `mongoimport` process.
+
+> However, if you do not have installed [`MongoDB Command Line Database Tools`](https://www.mongodb.com/try/download/database-tools "Download from mongodb official page") on your pc, you cannot use `mongoimport` command line since you are using mongodb above v4.2. To check whether it is properly install, type `mongoimport --version` in the system command line. If you get a version info, that means you are ready to use it.
+
+#### Syntax
+
+```js
+mongoimport <options> <connection-string> <file>
+```
+
+##### common `options`:
+
+`--version` : Returns the `mongoimport` release number. </br>
+`--help`    : Prints all the available options and use of `mongoimport` </br>
+`--db<database>, -d=<database>` : Specifies the name of the database on which to run the `mongoimport`. </br>
+`--collection=<collection>, -c=<collection>` : Specifies where the collection to import. If you do not specify it `mongoimport` takes imput filename as the collection name, omitting the file's extension if it has one. </br>
+`--fields=<field1[,field2]>, -f=<field1[,field2]>`: Only for `csv` and `tsv` files, not for `json`. `json` has its own key which can be used as a field name. Without any headerline in `csv` and `tsv` files can be provided fields by this option. </br>
+`--ignoreBlanks`: Only for `csv` and `tsv`, not for `json`. Ignores empty fields in `csv` and `tsv` exports. If not specified, `mongoimport` creates fields without values in imported documents. </br>
+`--type=<json|csv|tsv>`: Specifies the file type to import. Default is `json`. </br>
+`--file=<filename>`: Specifies the location and name of a file containing the data to import. </br>
+`--drop`: Modifies the import process so that the target instance drops the collection before importing the data from the input. </br>
+`--headerline`: Only for `csv` and `tsv`, not for `json`. Takes first line as field names. </br>
+`--mode=<insert|upsert|merge|delete>` :
+<ul>
+    <li>insert: Default is `insert`.</li>
+    <li>upsert: Replace existing documents in the database with matching documents from the import file.</li>
+    <li>merge: Merge existing documents that match a document in the import file with the new document. `mongoimport` will insert all other documents.</li>
+    <li>delete: Delete existing documents in the database that match a document in the import file. `mongoimport` takes no action on non-matching documents.</li>
+</ul>
+
+[Read More...](https://www.mongodb.com/docs/database-tools/mongoimport "From official docs page!")
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ### Advanced Practice
 
