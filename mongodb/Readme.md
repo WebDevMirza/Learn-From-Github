@@ -200,7 +200,16 @@ db.students.find();
 </details>
 
 <details>
-      <summary>9. Let's say, we do not want this database. Thus, can you delete the entire database you've just created?</summary>
+      <summary>9. How can you count total number of available documents in this collection?</summary>
+
+```js
+db.students.countDocuments();
+```
+
+</details>
+
+<details>
+      <summary>10. Let's say, we do not want this database. Thus, can you delete the entire database you've just created?</summary>
 
 ```js
 db.dropDatabase();
@@ -209,7 +218,7 @@ db.dropDatabase();
 </details>
 
 <details>
-      <summary>10. Exit the mongosh shell.</summary>
+      <summary>11. Exit the mongosh shell.</summary>
 
 ```js
 exit;
@@ -301,6 +310,35 @@ db.students.insertOne({
 ```
 
 > We can populate data into a collection in the form of `string`, `number`, `boolean`, `array`, `object` etc.
+
+</details>
+
+<details>
+      <summary>3. Insert the following table data in <code>students</code> collection.</summary>
+      
+| name      | age | class | group   | hobbies                      | Active | Address                                                            |
+|-----------|-----|-------|---------|------------------------------|--------|--------------------------------------------------------------------|
+| Charlotte | 15  | VIII  | general |                              |        |                                                                    |
+| Charlotte | 17  | X     | science | studying, playing, gardening |        |                                                                    |
+| Benjamin  | 14  | IX    | arts    |                              | true   |                                                                    |
+| Rowan     | 10  | III   | general |                              |        | street: 2416 Roosevelt,</br>city: San Francisco,</br>zipcode: 94108 |
+
+> Here we see, two charlottes in a school, and several blank fields in each document as well. In relational database system, the entry of such type of data is hard, while it is very simple and easy to entry this kind of data in mongoDB.
+
+```js
+db.students.insertMany([
+  { name: "Charlotte", age: 15, class: "VII", group: "general" },
+  { name: "Charlotte", age: 17, class: "X", group: "science", hobbies: ["studying", "playing", "gardening"] },
+  { name: "Benjamin", age: 14, class: "IX", group: "arts", isActive: true },
+  {
+    name: "Rowan",
+    age: 10,
+    class: "III",
+    group: "general",
+    address: { street: "2416 Roosevelt", city: "San Francisco", zipcode: 94108 },
+  },
+]);
+```
 
 </details>
 
