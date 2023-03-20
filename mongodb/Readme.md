@@ -28,13 +28,19 @@
                <li>
                     <a href="#insert-documents">Insert Documents</a>
                     <ul>
-                        <li><a href="#practice">Practice</a></li>
+                        <li><a href="#practice-insert">Practice Insert</a></li>
                     </ul>
                </li>
                <li>
                     <a href="#insert-documents-by-importing-files">Insert Documents by Importing Files</a>
                     <ul>
                         <li><a href="#advanced-practice">Advanced Practice</a></li>
+                    </ul>
+               </li>
+               <li>
+                    <a href="#query-documents">Query Documents</a>
+                    <ul>
+                        <li><a href="#practice-query">Practice Query</a></li>
                     </ul>
                </li>
             </ul>         
@@ -263,7 +269,7 @@ We can manually insert data into a MongoDB collection using the `insertOne()` or
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
 
-### Practice
+### Practice Insert
 
 <details>
       <summary>1. Insert the following table data in <code>students</code> collection. Add the first two documents by using <code>insertOne()</code> method, and then using <code>insertMany()</code> method for the rest.</summary>
@@ -395,7 +401,7 @@ db.students.insertOne({ name: "Bob", class: "XII", address: { street: "123 Main 
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
 
-### Insert Documents by Importing Files
+## Insert Documents by Importing Files
 
 One of the famous processes that can populate documents inside a collection of a database is to implement `mongoimport`. `mongoimport` must be run from the system command line, not from `mongosh` shell. `Extended JSON`, `CSV`, or `TSV` files can be imported by using `mongoimport` process.
 
@@ -429,7 +435,9 @@ mongoimport <options> <connection-string> <file>
 
 `--file=<filename>`: Specifies the location and name of a file containing the data to import. Must be specified at the last of the syntax.</br>
 
-[Read More...](https://www.mongodb.com/docs/database-tools/mongoimport "From official docs page!")
+<div>
+    <b><a href="https://www.mongodb.com/docs/database-tools/mongoimport">[ Read More... ]</a></b>
+</div>
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
@@ -474,6 +482,36 @@ db.flights.countDocuments()
 ```
 
 </details>
+
+<details>
+    <summary>5. How can you know the total number of documents in this collection that have country <code>Canada</code> ?</summary>
+
+```css
+db.flights.countDocuments({country: "Canada"})
+```
+
+This gives the exact number of documents in this collection that have country named `Canada`.
+
+</details>
+
+</br>
+
+> More advanced practices such as auth, merge, delete, fields, ignore blanks during importation are coming soon.
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+## Query Documents
+
+<!-- It is time to study mongodb query. -->
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+### Practice Query
+
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
