@@ -410,22 +410,24 @@ mongoimport <options> <connection-string> <file>
 ##### common `options`:
 
 `--version` : Returns the `mongoimport` release number. </br>
-`--help`    : Prints all the available options and use of `mongoimport` </br>
-`--db<database>, -d=<database>` : Specifies the name of the database on which to run the `mongoimport`. </br>
+`--help` : Prints all the available options and use of `mongoimport` </br>
+`--db=<database>, -d=<database>` : Specifies the name of the database on which to run the `mongoimport`. </br>
 `--collection=<collection>, -c=<collection>` : Specifies where the collection to import. If you do not specify it `mongoimport` takes imput filename as the collection name, omitting the file's extension if it has one. </br>
 `--fields=<field1[,field2]>, -f=<field1[,field2]>`: Only for `csv` and `tsv` files, not for `json`. `json` has its own key which can be used as a field name. Without any headerline in `csv` and `tsv` files can be provided fields by this option. </br>
 `--ignoreBlanks`: Only for `csv` and `tsv`, not for `json`. Ignores empty fields in `csv` and `tsv` exports. If not specified, `mongoimport` creates fields without values in imported documents. </br>
 `--type=<json|csv|tsv>`: Specifies the file type to import. Default is `json`. </br>
-`--file=<filename>`: Specifies the location and name of a file containing the data to import. </br>
 `--drop`: Modifies the import process so that the target instance drops the collection before importing the data from the input. </br>
 `--headerline`: Only for `csv` and `tsv`, not for `json`. Takes first line as field names. </br>
 `--mode=<insert|upsert|merge|delete>` :
+
 <ul>
     <li>insert: Default is `insert`.</li>
     <li>upsert: Replace existing documents in the database with matching documents from the import file.</li>
     <li>merge: Merge existing documents that match a document in the import file with the new document. `mongoimport` will insert all other documents.</li>
     <li>delete: Delete existing documents in the database that match a document in the import file. `mongoimport` takes no action on non-matching documents.</li>
 </ul>
+
+`--file=<filename>`: Specifies the location and name of a file containing the data to import. Must be specified at the last of the syntax.</br>
 
 [Read More...](https://www.mongodb.com/docs/database-tools/mongoimport "From official docs page!")
 
@@ -436,14 +438,42 @@ mongoimport <options> <connection-string> <file>
 ### Advanced Practice
 
 <details>
-    <summary>advanced tropics</summary>
+    <summary>1. Import <code>./mongodb/sample data/query/flights.csv</code> file containing nearly 7698 documents. Specify <code>airlines</code> as database, <code>flights</code> as collection. A headerline has already been included.</summary>
 
 ```js
-pa po
+mongoimport --db="airlines" --collection="flights" --type="csv" --headerline  --file="./mongodb/sample data/query/flights.csv"
 ```
 
 </details>
 
+<details>
+    <summary>2. How can you inspect this newly created database <code>airlines</code>?</summary>
+
+```js
+mongosh
+show dbs
+```
+
+</details>
+
+<details>
+    <summary>3. How can you enter this database and inspect the collection<code>flights</code>?</summary>
+
+```js
+use airlines
+show collections
+```
+
+</details>
+
+<details>
+    <summary>4. How can you know the total number of documents in this collection?</summary>
+
+```css
+db.flights.countDocuments()
+```
+
+</details>
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
