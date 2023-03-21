@@ -318,5 +318,21 @@
       "zipcode": 60001,
       "country": "USA"
     }
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Smith",
+    "gender": "female",
+    "age": 22,
+    "hasAuthority": false,
+    "role": ["patient", "lawyer"],
+    "language": ["english", "french"],
+    "address": {
+      "street": "5678 Elm St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
   }
 ]

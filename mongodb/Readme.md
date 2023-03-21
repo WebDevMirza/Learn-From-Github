@@ -639,13 +639,130 @@ db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).l
 ```
 
 <details>
-    <summary>8. do some comparison queries</summary>
+    <summary>8. Get a result of people who are above 30 years, and only show their firstName with age. Sort age in a ascending manner.</summary>
     
 ```js
-.
+db.people.find({age: {$gt:30}}, {_id: 0, firstName: 1, age: 1}).sort({age: 1})
 ```
 
 </details>
+
+<details>
+    <summary>9. Get a result of people who are 25 years or less, and only show their firstName, age, and hasAuthority fields. Sort age in a ascending manner and then sort firstName is descending alphabetically order. Now present only first two documents.</summary>
+    
+```js
+db.people.find({age: {$lte: 25}}, {_id: 0, firstName: 1, age: 1, hasAuthority: 1})
+db.people.find({age: {$lte: 25}}, {_id: 0, firstName: 1, age: 1, hasAuthority: 1}).sort({age: 1, firstName: -1})
+db.people.find({age: {$lte: 25}}, {_id: 0, firstName: 1, age: 1, hasAuthority: 1}).sort({age: 1, firstName: -1}).limit(2)
+```
+
+</details>
+
+<details>
+    <summary>10. Get a result of people who are female, and present the result only firstName with their age field.</summary>
+    
+```js
+db.people.find({gender: {$eq:"female"}}, {_id: 0, firstName: 1, age: 1})
+```
+
+**Equivalent to:**
+
+```js
+db.people.find({ gender: "female" }, { _id: 0, firstName: 1, age: 1 });
+```
+
+</details>
+
+<details>
+    <summary>11. Get a result of people who are not 55 years old, and present result with only lastName and their gender. Then count.</summary>
+    
+```js
+db.people.find({age: {$ne: 55}}, {_id: 0, lastName: 1, gender: 1})
+db.people.find({age: {$ne: 55}}, {_id: 0, lastName: 1, gender: 1}).count()
+```
+
+</details>
+
+<details>
+    <summary>12. Get a presented firstName and role result of people who have exactly one <code>patient</code> role. Then count.</summary>
+    
+```js
+db.people.find({role: ["patient"] }, {_id: 0, firstName: 1, role: 1})
+db.people.find({role: ["patient"] }, {_id: 0, firstName: 1, role: 1}).count()
+```
+
+> Gives result which has first `patient` element in the `role` array.
+
+</details>
+
+<details>
+    <summary>13. Get a presented firstName and role result of people who have exactly <code>patient</code> and then <code>lawyer</code> role in order. Then count.</summary>
+    
+```js
+db.people.find({role: ["patient", "lawyer"] }, {_id: 0, firstName: 1, role: 1})
+db.people.find({role: ["patient", "lawyer"] }, {_id: 0, firstName: 1, role: 1}).count()
+```
+
+> Gives result which `role` array has `patient` as a first element and `lawyer` as a second element.
+
+</details>
+
+<details>
+    <summary>14. Try to get exactly <code>lawyer</code> role in first order. Then count.</summary>
+    
+```js
+db.people.find({role: ["lawyer"] }, {_id: 0, firstName: 1, role: 1})
+db.people.find({role: ["lawyer"] }, {_id: 0, firstName: 1, role: 1}).count()
+```
+> If `lawyer` is the first element of the role array, it will show result otherwise show empty. Because we use `{role: ["lawyer"]}` meaning the very first element of the array.
+
+</details>
+
+<details>
+    <summary>15. Get a presented firstName and role result of people who have atleast <code>patient</code>. Then count.</summary>
+    
+```js
+db.people.find({role: {$in: ["patient"]}}, {_id: 0, firstName: 1, role: 1})
+db.people.find({role: {$in: ["patient"]}}, {_id: 0, firstName: 1, role: 1}).count()
+```
+
+> If `role` array has a `patient` element, no matter what its position in the array, it will give some result. This `role` might has more element rather than only one `patient` element.
+
+</details>
+
+<details>
+    <summary>16. Get a presented firstName and role result of people who have either <code>patient</code> or <code>doctor</code> or both role.</summary>
+    
+```js
+db.people.find({role: {$in: ["patient", "doctor"]}}, {_id: 0, firstName: 1, role: 1})
+```
+
+> Hmm, `role` array might has several additional elements. But this array must has atleast `patient` or `doctor` element. They may contain both elements as well. Element order is not important here.
+
+</details>
+
+<details>
+    <summary>17. Get a presented firstName and role result of people who does not have <code>patient</code> role.</summary>
+    
+```js
+db.people.find({role:{$nin: ["patient"]}}, {_id: 0, firstName: 1, role: 1})
+```
+
+> `role` array not containing `patient` element.
+
+</details>
+
+**Note: Equivalent code**
+
+```css
+db.people.find({ role: "lawyer" }, { _id: 0, firstName: 1, role: 1 })
+```
+
+is equivalent to
+
+```css
+db.people.find({ role: { $in: ["lawyer"] } }, { _id: 0, firstName: 1, role: 1 })
+```
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
