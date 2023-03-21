@@ -885,7 +885,7 @@ db.people.find({firstName: {$regex: /^M/ }}, {_id: 0, firstName: 1})
 </details>
 
 <!-- prettier-ignore -->
-> > [Help of selecting regex](https://regexr.com/) </br>
+> > [Help of selecting regex](https://regexr.com/?target=_blank)</br>
 > > [See All the operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
 
 <div align="right">
