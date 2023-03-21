@@ -42,7 +42,10 @@
                     <ul>
                         <li><a href="#practice-query">Practice Query</a></li>
                         <ul>
-                            <li><a href="#to-import-json-file">Step-1: To import json file</a></li>
+                            <li><a href="#step-1-to-import-json-file">Step-1: To import json file</a></li>
+                            <li><a href="#step-2-basic-query-selections">Step-2: Basic query selections</a></li>
+                            <li><a href="#step-3-comparison-query-selections">Step-3: Comparison query selections</a></li>
+                            <li><a href="#step-4-logical-query-selections">Step-4: Logical query selections</a></li>
                         </ul>
                     </ul>
                </li>
@@ -545,6 +548,10 @@ Before we proceed to practice query, we need an excellent database from where we
 mongoimport -d="society" -c="people" --file="./mongodb/sample data/society.json" --jsonArray
 ```
 
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
 ##### **Step-2: Basic query selections:**
 
 <details>
@@ -619,6 +626,10 @@ db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).l
 ```
     
 </details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ##### **Step-3: Comparison query selections:**
 
@@ -766,6 +777,10 @@ is equivalent to
 ```css
 db.people.find({ role: { $in: ["lawyer"] } }, { _id: 0, firstName: 1, role: 1 })
 ```
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
 
 ##### **Step-4: Logical query selections:**
 
