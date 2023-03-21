@@ -334,5 +334,22 @@
       "zipcode": 60001,
       "country": "USA"
     }
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Baha",
+    "gender": "male",
+    "age": 37,
+    "hasAuthority": true,
+    "role": ["patient"],
+    "language": ["english", "hindi"],
+    "address": {
+      "street": "1111 Cedar St",
+      "city": "Othertown",
+      "state": "NY",
+      "zipcode": 60003,
+      "country": "USA"
+    },
+    "isChairman": "Yes"
   }
 ]

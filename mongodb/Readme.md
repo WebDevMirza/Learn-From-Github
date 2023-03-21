@@ -47,6 +47,8 @@
                             <li><a href="#step-2-basic-query-selections">Step-2: Basic query selections</a></li>
                             <li><a href="#step-3-comparison-query-selections">Step-3: Comparison query selections</a></li>
                             <li><a href="#step-4-logical-query-selections">Step-4: Logical query selections</a></li>
+                            <li><a href="#step-5-element-query-selections">Step-5: Element query selections</a></li>
+                            <li><a href="#step-6-regex-query-selections">Step-6: Regex query selections</a></li>
                         </ul>
                     </ul>
                </li>
@@ -784,6 +786,107 @@ db.people.find({ role: { $in: ["lawyer"] } }, { _id: 0, firstName: 1, role: 1 })
 </div>
 
 ##### **Step-4: Logical query selections:**
+
+| Name |                                  Description                                  |
+| :--: | :---------------------------------------------------------------------------: |
+| $and | combines multiple conditions together; if all true, returns non-empty result. |
+| $or  | combines multiple conditions together; if any true, returns non-empty result. |
+| $nor |                                 inverts `$or`                                 |
+| $not |                              inverts conditions                               |
+
+#### Syntax:
+
+```js
+{ $and: [ { <expression1> }, { <expression2> } , ... , { <expressionN> } ] }
+{ $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+{ $nor: [ { <expression1> }, { <expression2> }, ...  { <expressionN> } ] }
+{ field: { $not: { <operator-expression> } } }
+```
+
+<details>
+    <summary>18. Get a list of firstName, gender, and age of people who are above 30 years old and female. Now, Sort their age in ascending order.</summary>
+    
+```js
+db.people.find({$and: [{age: {$gt: 30}}, {gender: {$eq: "female"}}]}, {_id: 0, firstName: 1, age: 1, gender: 1})
+db.people.find({$and: [{age: {$gt: 30}}, {gender: {$eq: "female"}}]}, {_id: 0, firstName: 1, age: 1, gender: 1}).sort({age: 1})
+```
+
+</details>
+
+<details>
+    <summary>19. Get a list of firstName, and role of people who are either doctor or lawyer or both. Now, Sort their name in ascending order.</summary>
+    
+```js
+db.people.find({$or: [{role: {$in: ["doctor"]}}, {role: {$in: ["lawyer"]}}]}, {_id: 0, firstName: 1, role: 1})
+db.people.find({$or: [{role: {$in: ["doctor"]}}, {role: {$in: ["lawyer"]}}]}, {_id: 0, firstName: 1, role: 1}).sort({firstName: 1})
+```
+
+</details>
+
+##### **Step-5: Element query selections:**
+
+|  Name   |                   Description                    |
+| :-----: | :----------------------------------------------: |
+| $exists |     inspects the target field exists or not.     |
+|  $type  | whether the target field is specific type or not |
+
+#### Syntax:
+
+```js
+{ field: { $exists: <boolean> } }
+{ field: { $type: <BSON type> } }
+```
+
+> [See available types](https://www.mongodb.com/docs/manual/reference/operator/query/type/#available-types)
+
+<details>
+    <summary>20. Inspect `isChairman` field is there or not.</summary>
+    
+```js
+db.people.find({isChairman: {$exists: true}}, {_id: 0, firstName: 1, isChairman: 1, age: 1})
+```
+
+</details>
+
+<details>
+    <summary>21. Count `address` field if it is an object.</summary>
+    
+```js
+db.people.find({address: {$type: "object"}}).count()
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+##### **Step-6: Regex query selections:**
+
+Provides regular expression capabilities for pattern matching strings in queries. MongoDB uses Perl compatible regular expressions (i.e. "PCRE" ) version 8.42 with UTF-8 support.
+
+#### Syntax:
+
+```js
+{ <field>: { $regex: /pattern/, $options: '<options>' } }
+{ <field>: { $regex: 'pattern', $options: '<options>' } }
+{ <field>: { $regex: /pattern/<options> } }
+```
+
+> [See available options](https://www.mongodb.com/docs/manual/reference/operator/query/regex/#mongodb-query-op.-options)
+
+<details>
+    <summary>22. Get the firstName list of people whose name starts with `M`.</summary>
+    
+```js
+db.people.find({firstName: {$regex: /^M/ }}, {_id: 0, firstName: 1})
+```
+
+</details>
+
+<!-- prettier-ignore -->
+> > [Help of selecting regex](https://regexr.com/) </br>
+> > [See All the operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
