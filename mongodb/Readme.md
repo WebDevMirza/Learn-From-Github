@@ -504,7 +504,24 @@ This gives the exact number of documents in this collection that have country na
 
 ## Query Documents
 
-<!-- It is time to study mongodb query. -->
+MongoDB queries are used to search and retrieve data from a collection of documents in a database.
+
+#### Syntax
+
+```js
+db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
+```
+
+> **`.find`** can take upto three parameters, but all are optional. If you pass no parameter, it retrieves all the documents in a collection.
+
+> **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators.
+> **`<projection>:`** (optional). The projection parameter determines which fields are returned in the matching documents. It is a process of representation of showing results.
+> **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options.
+
+> **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors not opened within a session automatically timeout after 10 minutes of inactivity.
+
+> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc.
+> [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>

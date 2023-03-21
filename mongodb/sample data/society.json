@@ -1,0 +1,322 @@
+[
+  {
+    "firstName": "Marjorie",
+    "lastName": "Ryan",
+    "gender": "female",
+    "age": 41,
+    "hasAuthority": true,
+    "role": ["admin", "doctor", "parents"],
+    "language": ["english", "france"],
+    "address": {
+      "street": "3624 Sheila Lane",
+      "city": "Reno",
+      "state": "Nevada",
+      "zipcode": 89501,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "gender": "male",
+    "age": 28,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english"],
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "gender": "female",
+    "age": 55,
+    "hasAuthority": true,
+    "role": ["admin", "nurse"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "456 Oak St",
+      "city": "Sometown",
+      "state": "NY",
+      "zipcode": 10001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "David",
+    "lastName": "Lee",
+    "gender": "male",
+    "age": 37,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "chinese"],
+    "address": {
+      "street": "789 Elm St",
+      "city": "Othertown",
+      "state": "TX",
+      "zipcode": 75001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Amy",
+    "lastName": "Chen",
+    "gender": "female",
+    "age": 25,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "mandarin"],
+    "address": {
+      "street": "555 Pine St",
+      "city": "Anycity",
+      "state": "WA",
+      "zipcode": 98001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Nguyen",
+    "gender": "male",
+    "age": 48,
+    "hasAuthority": true,
+    "role": ["admin", "doctor"],
+    "language": ["english", "vietnamese"],
+    "address": {
+      "street": "222 Broadway",
+      "city": "Anothercity",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Robert",
+    "lastName": "Johnson",
+    "gender": "male",
+    "age": 33,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "german"],
+    "address": {
+      "street": "789 Oak St",
+      "city": "Sometown",
+      "state": "OH",
+      "zipcode": 43201,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Laura",
+    "lastName": "Gonzalez",
+    "gender": "female",
+    "age": 27,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "123 Elm St",
+      "city": "Anycity",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "William",
+    "lastName": "Lee",
+    "gender": "male",
+    "age": 45,
+    "hasAuthority": true,
+    "role": ["admin", "nurse"],
+    "language": ["english"],
+    "address": {
+      "street": "456 Maple St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Samantha",
+    "lastName": "Jones",
+    "gender": "female",
+    "age": 31,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "french"],
+    "address": {
+      "street": "789 Pine St",
+      "city": "Anycity",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "gender": "male",
+    "age": 25,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Anna",
+    "lastName": "Lee",
+    "gender": "female",
+    "age": 37,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "korean"],
+    "address": {
+      "street": "456 Oak St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Garcia",
+    "gender": "male",
+    "age": 50,
+    "hasAuthority": true,
+    "role": ["admin", "nurse"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "789 Elm St",
+      "city": "Anycity",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Kim",
+    "gender": "female",
+    "age": 19,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "korean"],
+    "address": {
+      "street": "321 Pine St",
+      "city": "Smalltown",
+      "state": "TX",
+      "zipcode": 75001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Martinez",
+    "gender": "male",
+    "age": 28,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "555 Cedar St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Avery",
+    "lastName": "Jackson",
+    "gender": "non-binary",
+    "age": 22,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english"],
+    "address": {
+      "street": "2468 Maple St",
+      "city": "Sometown",
+      "state": "OH",
+      "zipcode": 43201,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Sarah",
+    "lastName": "Wong",
+    "gender": "female",
+    "age": 26,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "chinese"],
+    "address": {
+      "street": "1111 Cedar St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Nathan",
+    "lastName": "Johnson",
+    "gender": "male",
+    "age": 35,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "spanish"],
+    "address": {
+      "street": "2222 Maple St",
+      "city": "Sometown",
+      "state": "OH",
+      "zipcode": 43201,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Emily",
+    "lastName": "Davis",
+    "gender": "female",
+    "age": 29,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english"],
+    "address": {
+      "street": "3333 Oak St",
+      "city": "Anycity",
+      "state": "CA",
+      "zipcode": 90001,
+      "country": "USA"
+    }
+  },
+  {
+    "firstName": "Lucy",
+    "lastName": "Smith",
+    "gender": "female",
+    "age": 22,
+    "hasAuthority": false,
+    "role": ["patient"],
+    "language": ["english", "french"],
+    "address": {
+      "street": "5678 Elm St",
+      "city": "Othertown",
+      "state": "IL",
+      "zipcode": 60001,
+      "country": "USA"
+    }
+  }
+]
