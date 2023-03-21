@@ -515,14 +515,16 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 > **`.find`** can take upto three parameters, but all are optional. If you pass no parameter, it retrieves all the documents in a collection.
 
+<!-- prettier-ignore -->
 > **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br> 
 > **`<projection>:`** (optional). The projection parameter determines which fields are returned in the matching documents. It is a process of representation of showing results. </br>  
 > **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options.
 
 > **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors cannot be opened within a session automatically timeout after 10 minutes of inactivity.
 
-> **`cursorMethods():`** Common cursor methods are `.count()`, `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br>  [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
+> **`cursorMethods():`** Common cursor methods are `.count()`, `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br> [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
 
+<!-- prettier-ignore -->
 > > **`Query Operators:`** [All the available query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors) </br> 
 > > **`Projection Operators:`** [All the available projection operators](https://www.mongodb.com/docs/manual/reference/operator/query/#projection-operators)
 
@@ -551,7 +553,6 @@ db.people.find().count()
 ```
     
 </details>
-
 
 <details>
     <summary>2. Get all the documents that have <code>gender: female</code>. After that, apply <code>count()</code> method.</summary>
@@ -618,18 +619,19 @@ db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).l
 
 **Step-3: Comparison query selections:**
 
-| Name |           Description          |
-|:----:|:------------------------------:|
-|  $eq | equal to                       |
-|  $ne | not equal to                   |
-|  $gt | greater than                   |
-| $gte | greater than or equal          |
-|  $lt | less than                      |
-| $lte | less than or equal             |
-|  $in | any of the values in an array  |
+| Name |          Description           |
+| :--: | :----------------------------: |
+| $eq  |            equal to            |
+| $ne  |          not equal to          |
+| $gt  |          greater than          |
+| $gte |     greater than or equal      |
+| $lt  |           less than            |
+| $lte |       less than or equal       |
+| $in  | any of the values in an array  |
 | $nin | none of the values in an array |
 
 #### Syntax:
+
 ```js
 { <field>: { $<comparisionName>: <value> } }        \\ not for $in and $nin
 { <field>: { $in: [<value1>, <value2>, ..., <valueN> ] } }      \\ only for $in
@@ -640,9 +642,9 @@ db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).l
     <summary>8. do some comparison queries</summary>
     
 ```js
-
+.
 ```
-    
+
 </details>
 
 <div align="right">
