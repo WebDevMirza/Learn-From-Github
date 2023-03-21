@@ -518,8 +518,7 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 <!-- prettier-ignore -->
 > **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br> 
 > **`<projection>:`** (optional). The projection parameter determines which fields are returned in the matching documents. It is a process of representation of showing results. </br>  
-> **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options.
-
+> **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options. </br>
 > **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors cannot be opened within a session automatically timeout after 10 minutes of inactivity.
 
 > **`cursorMethods():`** Common cursor methods are `.count()`, `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br> [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
