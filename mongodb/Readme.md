@@ -41,6 +41,9 @@
                     <a href="#query-documents">Query Documents</a>
                     <ul>
                         <li><a href="#practice-query">Practice Query</a></li>
+                        <ul>
+                            <li><a href="#to-import-json-file">Step-1: To import json file</a></li>
+                        </ul>
                     </ul>
                </li>
             </ul>         
@@ -536,13 +539,13 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 Before we proceed to practice query, we need an excellent database from where we can implement and understand how query works in mongoDB. A [json file](./sample%20data/society.json) is already created. Now import this file by using `mongoimport` command line [[Guide Me]](#insert-documents-by-importing-files), and create a database named `society` and a collection named `people`.
 
-**Step-1: To import json file:**
+##### **Step-1: To import json file:**
 
 ```js
 mongoimport -d="society" -c="people" --file="./mongodb/sample data/society.json" --jsonArray
 ```
 
-**Step-2: Basic query practice:**
+##### **Step-2: Basic query selections:**
 
 <details>
     <summary>1. Get all the documents in <code>people</code> collection. After receiving the results, apply <code>count()</code> cursor method to get the amount of documents of this query.</summary>
@@ -617,7 +620,7 @@ db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).l
     
 </details>
 
-**Step-3: Comparison query selections:**
+##### **Step-3: Comparison query selections:**
 
 | Name |          Description           |
 | :--: | :----------------------------: |
@@ -763,6 +766,8 @@ is equivalent to
 ```css
 db.people.find({ role: { $in: ["lawyer"] } }, { _id: 0, firstName: 1, role: 1 })
 ```
+
+##### **Step-4: Logical query selections:**
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
