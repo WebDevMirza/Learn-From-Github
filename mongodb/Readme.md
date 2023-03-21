@@ -432,6 +432,7 @@ mongoimport <options> <connection-string> <file>
 </ul>
 
 `--file=<filename>`: Specifies the location and name of a file containing the data to import. Must be specified at the last of the syntax.</br>
+`--jsonArray`: Add this if you get `Failed: cannot decode array into a primitive` problem while importing json file. </br>
 `--version` : Returns the `mongoimport` release number. </br>
 `--help` : Prints all the available options and use of `mongoimport` </br>
 
@@ -520,7 +521,7 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 > **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors cannot be opened within a session automatically timeout after 10 minutes of inactivity.
 
-> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br>  [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
+> **`cursorMethods():`** Common cursor methods are `.count()`, `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br>  [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
 
 > > **`Query Operators:`** [All the available query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors) </br> 
 > > **`Projection Operators:`** [All the available projection operators](https://www.mongodb.com/docs/manual/reference/operator/query/#projection-operators)
@@ -532,6 +533,117 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 ### Practice Query
 
 Before we proceed to practice query, we need an excellent database from where we can implement and understand how query works in mongoDB. A [json file](./sample%20data/society.json) is already created. Now import this file by using `mongoimport` command line [[Guide Me]](#insert-documents-by-importing-files), and create a database named `society` and a collection named `people`.
+
+**Step-1: To import json file:**
+
+```js
+mongoimport -d="society" -c="people" --file="./mongodb/sample data/society.json" --jsonArray
+```
+
+**Step-2: Basic query practice:**
+
+<details>
+    <summary>1. Get all the documents in <code>people</code> collection. After receiving the results, apply <code>count()</code> cursor method to get the amount of documents of this query.</summary>
+    
+```js
+db.people.find()
+db.people.find().count()
+```
+    
+</details>
+
+
+<details>
+    <summary>2. Get all the documents that have <code>gender: female</code>. After that, apply <code>count()</code> method.</summary>
+    
+```js
+db.people.find({gender: "female"})
+db.people.find({gender: "female"}).count()
+```
+    
+</details>
+
+<details>
+    <summary>3. Get documents that have <code>hasAuthority: false</code>. Count and then limit to first three results.</summary>
+    
+```js
+db.people.find({hasAuthority: false})
+db.people.find({hasAuthority: false}).count()
+db.people.find({hasAuthority: false}).limit(3)
+```
+    
+</details>
+
+<details>
+    <summary>4. Get documents that have <code>hasAuthority: true</code>, but this time you need a projection query. Let you want to present <code>firstName: &lt;value&gt;</code> each of the document. How can you do that? After doing that, count and limit to first two results.</summary>
+    
+```js
+db.people.find({hasAuthority: true}, {firstName: 1})   // `1` means to show while `0` means not to show fields.
+db.people.find({hasAuthority: true}, {firstName: 1}).count()
+db.people.find({hasAuthority: true}, {firstName: 1}).limit(2)
+```
+    
+</details>
+
+<details>
+    <summary>5. Later, you wish to get the results in alphabetically order. How can you do it?</summary>
+    
+```js
+db.people.find({hasAuthority: true}, {firstName: 1}).sort({firstName: 1})
+```
+    
+</details>
+    
+<details>
+    <summary>6. MongoDB gives an auto generated unique id. But I want to repersent my result without it, and I also want firstName, lastName, and their age those who have <code>hasAuthority: true</code>. And of course, firstName must be in alphabetically order. Can you do it for me, please? After that, count total results.</summary>
+    
+```js
+db.people.find({hasAuthority: true}, {_id: 0, firstName: 1, lastName: 1, age: 1}).sort({firstName: 1})
+db.people.find({hasAuthority: true}, {_id: 0, firstName: 1, lastName: 1, age: 1}).sort({firstName: 1}).count()
+```
+    
+</details>
+
+<details>
+    <summary>7. Now get all the documents and present only firstName, age, and language fields. After that, sort their age in ascending order. Then descending order. Then limit to first five results in ascending order.</summary>
+    
+```js
+db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}) 
+db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1})    \\ ascending order.
+db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: -1})     \\ descending order.
+db.people.find({}, {_id: 0, firstName: 1, age: 1, language: 1}).sort({age: 1}).limit(5)   \\ ascending order and first five results.
+```
+    
+</details>
+
+**Step-3: Comparison query selections:**
+
+| Name |           Description          |
+|:----:|:------------------------------:|
+|  $eq | equal to                       |
+|  $ne | not equal to                   |
+|  $gt | greater than                   |
+| $gte | greater than or equal          |
+|  $lt | less than                      |
+| $lte | less than or equal             |
+|  $in | any of the values in an array  |
+| $nin | none of the values in an array |
+
+#### Syntax:
+```js
+{ <field>: { $<comparisionName>: <value> } }        \\ not for $in and $nin
+{ <field>: { $in: [<value1>, <value2>, ..., <valueN> ] } }      \\ only for $in
+{ <field>: { $nin: [<value1>, <value2>, ..., <valueN> ] } }      \\ only for $nin
+```
+
+<details>
+    <summary>8. do some comparison queries</summary>
+    
+```js
+
+```
+    
+</details>
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
