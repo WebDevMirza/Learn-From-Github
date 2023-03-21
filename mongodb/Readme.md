@@ -415,15 +415,13 @@ mongoimport <options> <connection-string> <file>
 
 ##### common `options`:
 
-`--version` : Returns the `mongoimport` release number. </br>
-`--help` : Prints all the available options and use of `mongoimport` </br>
 `--db=<database>, -d=<database>` : Specifies the name of the database on which to run the `mongoimport`. </br>
 `--collection=<collection>, -c=<collection>` : Specifies where the collection to import. If you do not specify it `mongoimport` takes imput filename as the collection name, omitting the file's extension if it has one. </br>
-`--fields=<field1[,field2]>, -f=<field1[,field2]>`: Only for `csv` and `tsv` files, not for `json`. `json` has its own key which can be used as a field name. Without any headerline in `csv` and `tsv` files can be provided fields by this option. </br>
-`--ignoreBlanks`: Only for `csv` and `tsv`, not for `json`. Ignores empty fields in `csv` and `tsv` exports. If not specified, `mongoimport` creates fields without values in imported documents. </br>
 `--type=<json|csv|tsv>`: Specifies the file type to import. Default is `json`. </br>
-`--drop`: Modifies the import process so that the target instance drops the collection before importing the data from the input. </br>
 `--headerline`: Only for `csv` and `tsv`, not for `json`. Takes first line as field names. </br>
+`--ignoreBlanks`: Only for `csv` and `tsv`, not for `json`. Ignores empty fields in `csv` and `tsv` exports. If not specified, `mongoimport` creates fields without values in imported documents. </br>
+`--fields=<field1[,field2]>, -f=<field1[,field2]>`: Only for `csv` and `tsv` files, not for `json`. `json` has its own key which can be used as a field name. Without any headerline in `csv` and `tsv` files can be provided fields by this option. </br>
+`--drop`: Modifies the import process so that the target instance drops the collection before importing the data from the input. </br>
 `--mode=<insert|upsert|merge|delete>` :
 
 <ul>
@@ -434,6 +432,8 @@ mongoimport <options> <connection-string> <file>
 </ul>
 
 `--file=<filename>`: Specifies the location and name of a file containing the data to import. Must be specified at the last of the syntax.</br>
+`--version` : Returns the `mongoimport` release number. </br>
+`--help` : Prints all the available options and use of `mongoimport` </br>
 
 <div>
     <b><a href="https://www.mongodb.com/docs/database-tools/mongoimport">[ Read More... ]</a></b>
@@ -514,23 +514,21 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 > **`.find`** can take upto three parameters, but all are optional. If you pass no parameter, it retrieves all the documents in a collection.
 
-> **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br>
-> **`<projection>:`** (optional). The projection parameter determines which fields are returned in the matching documents. It is a process of representation of showing results. </br>
-> **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options.
+> **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br> > **`<projection>:`** (optional). The projection parameter determines which fields are returned in the matching documents. It is a process of representation of showing results. </br> > **`<options>:`** (optional). These options modify query behavior and how results are returned. Variables can be applied for query through options.
 
 > **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors cannot be opened within a session automatically timeout after 10 minutes of inactivity.
 
-> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br> 
-[All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
+> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br> > [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
 
-> > **`Query Operators:`** [All the available query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors) </br>
-> > **`Projection Operators:`** [All the available projection operators](https://www.mongodb.com/docs/manual/reference/operator/query/#projection-operators)
+> > **`Query Operators:`** [All the available query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors) </br> > > **`Projection Operators:`** [All the available projection operators](https://www.mongodb.com/docs/manual/reference/operator/query/#projection-operators)
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
 
 ### Practice Query
+
+Before we proceed to practice query, we need an excellent database from where we can implement and understand how query works in mongoDB. A [json file] ("./sample data/society.json) is already created. Now import this file by using `mongoimport` command line [[Guide Me]]("#insert-documents-by-importing-files), and create a database named `society` and a collection named `people`.
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
