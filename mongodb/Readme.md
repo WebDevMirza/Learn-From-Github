@@ -1,11 +1,12 @@
 ###### MongoDB
 
 <div align="center">
+    <img src="./assets/logo.svg" alt="MONGODB" width="150" height="auto"/>
     <h1>Welcome to MongoDB Practice</h1>
 </div>
 
-<details>
-    <summary>Table of Contains</summary>
+<details open>
+    <summary><h2>Table of Contains</h2></summary>
     <ol>
         <li>
             <a href="#about-mongodb">About MongoDB</a>
