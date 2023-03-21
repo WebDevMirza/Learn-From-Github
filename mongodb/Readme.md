@@ -520,7 +520,7 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 > **`returns:`** `.find()` returns a `cursor`, the result set of a query. Clients can iterate through a cursor to retrieve results. By default, cursors cannot be opened within a session automatically timeout after 10 minutes of inactivity.
 
-> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br> > [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
+> **`cursorMethods():`** Common cursor methods are `.limit()`, `.sort()`, `.forEach()`, `.skip()`, `.next()` etc. </br>  [All available cursor methods...](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#available-mongosh-cursor-methods)
 
 > > **`Query Operators:`** [All the available query operators](https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors) </br> 
 > > **`Projection Operators:`** [All the available projection operators](https://www.mongodb.com/docs/manual/reference/operator/query/#projection-operators)
@@ -531,7 +531,7 @@ db.myCollections.find(<query>, <projection>, <options>).cursorMethods()
 
 ### Practice Query
 
-Before we proceed to practice query, we need an excellent database from where we can implement and understand how query works in mongoDB. A [json file] ("./sample data/society.json") is already created. Now import this file by using `mongoimport` command line [[Guide Me]]("#insert-documents-by-importing-files"), and create a database named `society` and a collection named `people`.
+Before we proceed to practice query, we need an excellent database from where we can implement and understand how query works in mongoDB. A [json file](./sample%20data/society.json) is already created. Now import this file by using `mongoimport` command line [[Guide Me]](#insert-documents-by-importing-files), and create a database named `society` and a collection named `people`.
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
