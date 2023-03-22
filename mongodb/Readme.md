@@ -49,6 +49,8 @@
                             <li><a href="#step-4-logical-query-selections">Step-4: Logical query selections</a></li>
                             <li><a href="#step-5-element-query-selections">Step-5: Element query selections</a></li>
                             <li><a href="#step-6-regex-query-selections">Step-6: Regex query selections</a></li>
+                            <li><a href="#step-7-query-selections-for-object">Step-7: Query selections for object</a></li>
+                            <li><a href="#step-8-query-selections-for-array">Step-8: Query selections for array</a></li>
                         </ul>
                     </ul>
                </li>
@@ -700,6 +702,8 @@ db.people.find({age: {$ne: 55}}, {_id: 0, lastName: 1, gender: 1}).count()
 
 </details>
 
+###### Handling Arrays (12-17)
+
 <details>
     <summary>12. Get a presented firstName and role result of people who have exactly one <code>patient</code> role. Then count.</summary>
     
@@ -765,7 +769,7 @@ db.people.find({role: {$in: ["patient", "doctor"]}}, {_id: 0, firstName: 1, role
 db.people.find({role:{$nin: ["patient"]}}, {_id: 0, firstName: 1, role: 1})
 ```
 
-> `role` array not containing `patient` element.
+> `role` array does not contain `patient` element.
 
 </details>
 
@@ -887,6 +891,130 @@ db.people.find({firstName: {$regex: /^M/ }}, {_id: 0, firstName: 1})
 <!-- prettier-ignore -->
 > > [Help of selecting regex](https://regexr.com/) </br>
 > > [See All the operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+##### **Step-7: Query selections for object:**
+
+<details>
+    <summary>23. Search the person who has street: "3333 Oak St", city: "Anycity", state: "CA", zipcode: 90001, and country: "USA".</summary>
+    
+```js
+db.people.find({address: {street: "3333 Oak St", city: "Anycity", state: "CA", zipcode: 90001, country: "USA"}})
+```
+
+> Needs all the fields and exactly in the same order to perform a correct result; Otherwise, use dot notation for individual key.
+
+</details>
+
+<details>
+    <summary>24. Get a list having firstName and city of person who are from `Anycity` city.</summary>
+    
+```js
+db.people.find({"address.city": "Anycity"}, {_id: 0, firstName: 1, "address.city": 1})
+```
+
+</details>
+
+> **Note:** When querying using dot notation, the field and nested field must be inside quotation marks.
+
+<details>
+    <summary>25. Get a list having firstName and address zipcode of person whose zipcode is between 60000 and 70000.</summary>
+    
+```js
+db.people.find({$and: [{"address.zipcode": {$gt: 60000}}, {"address.zipcode": {$lt: 70000}}]}, {_id: 0, firstName: 1, "address.zipcode": 1})
+```
+
+</details>
+
+<details>
+    <summary>26. Get a list having firstName and address zipcode of person who is female and whose zipcode is between 60000 and 70000.</summary>
+    
+```js
+db.people.find({$and: [{"address.zipcode": {$gt: 60000}}, {"address.zipcode": {$lt: 70000}}, {gender: "female"}]}, {_id: 0, firstName: 1, "address.zipcode": 1})
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+##### **Step-8: Query selections for array:**
+
+> **Note:** [See Handling Arrays (12-17)](<#handling-arrays-(12-17)>)
+
+<details>
+    <summary>27. Search the person who has street: "3333 Oak St", city: "Anycity", state: "CA", zipcode: 90001, and country: "USA".</summary>
+    
+```js
+db.people.find({role: {$all: ["lawyer", "patient"]}}).count()
+```
+
+> If you use `$all`, it finds all the target values whatever their position inside an array. It does not follow order.
+
+</details>
+
+<details>
+    <summary>28. Search a doctor, but person may have multiple roles.</summary>
+    
+```js
+db.people.find({role: "doctor"}, {role: 1})
+```
+
+> Here, role contains the string "doctor" as one of its elements.
+
+</details>
+
+<details>
+    <summary>29. List of firsName and their role of people who has `lawyer` and `patient` role.</summary>
+    
+```js
+db.people.find({role: {$eq: "lawyer", $eq:"patient"}}, {role: 1, _id: 0, firstName: 1})
+```
+
+> Here, role contains either lawyer or patient, or even both.
+
+</details>
+
+> > [Take a look of $elemMatch](https://www.mongodb.com/docs/manual/reference/operator/query/elemMatch/#-elemmatch--query-). The `$elemMatch` operator matches documents that contain an array field with at least one element that matches all the specified query criteria. However, if your `$elemMatch` expression contains the $not or $ne operators then omitting the `$elemMatch` expression changes the documents returned.
+
+**Array Index; Use of `<array>.<index>: <value>`**
+
+<details>
+    <summary>31. Query an array by its length.</summary>
+    
+```js
+db.people.find({"language.1": "spanish"}).count()       // here `1` is the index of language array.
+```
+
+</details>
+
+**Array Length; Use of `$size: <number>`**
+
+<details>
+    <summary>32. Count how many people talks in only one language.</summary>
+    
+```js
+db.people.find({language: {$size: 1}}).count()          // how many people have only one language, meaning `language` array got only one element.
+```
+
+</details>
+
+**Project Specific Array Elements Use of `$slice: <number>`**
+
+<details>
+    <summary>33. Present people's last role. People must be above 30 years old.</summary>
+    
+```js
+db.people.find({age: {$gt: 30}}, {_id: 0, firstName: 1, role: {$slice: -1}})   
+// `$slice: 1` means first one value, `$slice: 2` means first two values, `$slice: 3` means first three values,
+// `$slice: -1` means last value.
+```
+
+</details>
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
