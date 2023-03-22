@@ -1,7 +1,7 @@
 ###### Learn npm
 
 <div align="center">
-    <!-- <img src="./assets/logo.svg" alt="npm" width="150" height="auto"/> -->
+    <img src="./assets/logo.png" alt="npm" width="150" height="auto"/>
     <h1>Welcome to Learn NPM</h1>
 </div>
 
@@ -24,11 +24,13 @@
                     <li><a href="#step-3-npm-install-process">Step-3: npm Install Process</a></li>
                     <li><a href="#step-4-npm-update-and-uninstall">Step-4: npm Update and Uninstall</a></li>
                 </ul>
+                <li><a href="#package-json-script-field">Package.json Script Field</a></li>
+                <li><a href="#what-about-npx">What About npx</a></li>
             </ul>
         </li>
-            <!-- <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
             <li><a href="#author">Author</a></li>
-            <li><a href="#contributions">Contributions</a></li> -->
+            <li><a href="#contributions">Contributions</a></li>
         </li>
     </ol>
 
@@ -50,6 +52,7 @@ Overall, npm is an essential tool for modern JavaScript development, making it e
 `react-router:` Declarative routing for React.
 `nodemon:` Automatically restart node application when file changes are detected.
 `express:` Fast, unopinionated, minimalist web framework for Node.js.
+`typescript:` TypeScript is a language for application scale JavaScript development.
 `mongoose:` A library for working with MongoDB databases in Node.js.
 `axios:` Promise based HTTP client for the browser and node.js
 
@@ -58,6 +61,8 @@ Overall, npm is an essential tool for modern JavaScript development, making it e
 </div>
 
 # Getting Started
+
+All the basic stuffs will be covered regarding npm and package.json file. All you need to do just install node in your system, and you are ready to go.
 
 ## Basic npm Commands
 
@@ -245,8 +250,64 @@ It installs all the dependencies and dev-dependencies in package.json
 
 ##### Syntax:
 
-To update a package: `npm update <package>`
+To update a package: `npm update <package>` </br>
 To uninstall a package: `npm uninstall <package>`
+
+<div align="right">
+    <b><a href="#learn-npm">↥ back to top</a></b>
+</div>
+
+## Package.json Script Field
+
+```json
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon dev.js"
+  },
+```
+
+To access this, type `npm start` or `npm run dev` in the terminal.
+
+[Official Docs About Scripts](https://docs.npmjs.com/cli/v9/using-npm/scripts)
+
+<div align="right">
+    <b><a href="#learn-npm">↥ back to top</a></b>
+</div>
+
+## What About npx
+
+npx stands for Node Package eXecute. From version 5.2+, npx is used to execute node packages without the need to install them. With npx, you can run a package by simply specifying its name and version, and npx will download and execute it for you. This is particularly useful when you need to run a one-time command or script, or when you want to try out a package without installing it permanently.
+
+##### Example:
+
+```cmd
+npx create-react-app my-app
+```
+
+<div align="right">
+    <b><a href="#learn-npm">↥ back to top</a></b>
+</div>
+
+# Conclusion
+
+At this point, a basic understanding and working process should be achieved. Use this artical as a **cheat sheet.**
+
+<div align="right">
+    <b><a href="#learn-npm">↥ back to top</a></b>
+</div>
+
+# Author
+
+- Mirza Monirul Alam
+- Full Stack Web Developer.
+
+<div align="right">
+    <b><a href="#learn-npm">↥ back to top</a></b>
+</div>
+
+# Contributions
+
+Any contributions will be appreciated. **THANK YOU**
 
 <div align="right">
     <b><a href="#learn-npm">↥ back to top</a></b>
