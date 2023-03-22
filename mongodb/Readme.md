@@ -30,12 +30,10 @@
                     <a href="#insert-documents">Insert Documents</a>
                     <ul>
                         <li><a href="#practice-insert">Practice Insert</a></li>
-                    </ul>
-               </li>
-               <li>
-                    <a href="#insert-documents-by-importing-files">Insert Documents by Importing Files</a>
-                    <ul>
-                        <li><a href="#advanced-practice">Advanced Practice</a></li>
+                        <ul>
+                            <li><a href="#step-1-general-import">Step-1: General Import</a></li>
+                            <li><a href="#step-2-insert-documents-by-importing-files">Step-2: Insert Documents by Importing Files</a></li>
+                        </ul>
                     </ul>
                </li>
                <li>
@@ -58,12 +56,29 @@
                     <a href="#update-documents">Update Documents</a>
                     <ul>
                         <li><a href="#practice-update">Practice Update</a></li>
-                        <!-- <ul>
-                            <li><a href="#step-1-to-import-json-file">Step-1: To import json file</a></li>
-                        </ul> -->
+                        <ul>
+                            <li><a href="#step-1-using-updateone---">Step-1: Using .updateOne({ }, { })</a></li>
+                            <li><a href="#step-2-using-updatemany---">Step-2: Using .updateMany({ }, { })</a></li>
+                            <li><a href="#step-3-using-updateone-----">Step-3: Using .updateOne({ }, { }, { })</a></li>
+                            <li><a href="#step-4-using-replaceone---">Step-4: Using .replaceOne({ }, { })</a></li>
+                        </ul>
                     </ul>
                </li>
-            </ul>         
+               <li>
+                    <a href="#delete-documents">Delete Documents</a>
+                    <ul>
+                        <li><a href="#practice-delete">Practice Delete</a></li>
+                        <ul>
+                            <li><a href="#step-1-using-deleteone-">Step-1: Using .deleteOne()</a></li>
+                            <li><a href="#step-2-using-deletemany-">Step-2: Using .deleteMany()</a></li>
+                            <li><a href="#step-3-using-updateone-----">Step-3: Using .remove()</a></li>
+                        </ul>
+                    </ul>
+               </li>
+            </ul>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#author">Author</a></li>
+            <li><a href="#contributions">Contributions</a></li>
         </li>
     </ol>
 
@@ -291,6 +306,8 @@ We can manually insert data into a MongoDB collection using the `insertOne()` or
 
 ### Practice Insert
 
+##### **Step-1: General Import:**
+
 <details>
       <summary>1. Insert the following table data in <code>students</code> collection. Add the first two documents by using <code>insertOne()</code> method, and then using <code>insertMany()</code> method for the rest.</summary>
       
@@ -421,7 +438,7 @@ db.students.insertOne({ name: "Bob", class: "XII", address: { street: "123 Main 
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
 
-## Insert Documents by Importing Files
+##### **Step-2: Insert Documents by Importing Files:**
 
 One of the famous processes that can populate documents inside a collection of a database is to implement `mongoimport`. `mongoimport` must be run from the system command line, not from `mongosh` shell. `Extended JSON`, `CSV`, or `TSV` files can be imported by using `mongoimport` process.
 
@@ -460,11 +477,7 @@ mongoimport <options> <connection-string> <file>
     <b><a href="https://www.mongodb.com/docs/database-tools/mongoimport">[ Read More... ]</a></b>
 </div>
 
-<div align="right">
-    <b><a href="#mongodb">↥ back to top</a></b>
-</div>
-
-### Advanced Practice
+</br>
 
 <details>
     <summary>1. Import <code>./mongodb/sample data/query/flights.csv</code> file containing nearly 7698 documents. Specify <code>airlines</code> as database, <code>flights</code> as collection. A headerline has already been included.</summary>
@@ -1152,7 +1165,7 @@ db.collection.remove(<query>, <justOne-boolean>)
     <b><a href="#mongodb">↥ back to top</a></b>
 </div>
 
-### Practice Update
+### Practice Delete
 
 <!-- go -->
 
@@ -1177,6 +1190,28 @@ db.people.deleteMany({ age: { $eq: 22 } });
 ```
 
 </details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+# Conclusion
+Here in this article, all the basics including most advanced topics are covered. At this point, anyone can understanding mongoDB database system and able to implement the power of this database to build server side website. If you want to learn more, you can browse the official docs. [Official Docs](https://www.mongodb.com/docs/launch-manage/)
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+# Author
+- Mirza Monirul Alam (Ethen)
+- Full Stack Developer.
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+# Contributions
+Any contribution will be appreciated. **THANK YOU**
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
