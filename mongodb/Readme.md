@@ -71,7 +71,6 @@
                         <ul>
                             <li><a href="#step-1-using-deleteone-">Step-1: Using .deleteOne()</a></li>
                             <li><a href="#step-2-using-deletemany-">Step-2: Using .deleteMany()</a></li>
-                            <li><a href="#step-3-using-updateone-----">Step-3: Using .remove()</a></li>
                         </ul>
                     </ul>
                </li>
