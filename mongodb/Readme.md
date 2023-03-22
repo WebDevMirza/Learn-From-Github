@@ -54,6 +54,15 @@
                         </ul>
                     </ul>
                </li>
+               <li>
+                    <a href="#update-documents">Update Documents</a>
+                    <ul>
+                        <li><a href="#practice-update">Practice Update</a></li>
+                        <!-- <ul>
+                            <li><a href="#step-1-to-import-json-file">Step-1: To import json file</a></li>
+                        </ul> -->
+                    </ul>
+               </li>
             </ul>         
         </li>
     </ol>
@@ -998,7 +1007,8 @@ db.people.find({"language.1": "spanish"}).count()       // here `1` is the index
     <summary>32. Count how many people talks in only one language.</summary>
     
 ```js
-db.people.find({language: {$size: 1}}).count()          // how many people have only one language, meaning `language` array got only one element.
+db.people.find({language: {$size: 1}}).count()          
+// how many people have only one language, meaning `language` array got only one element.
 ```
 
 </details>
@@ -1015,6 +1025,43 @@ db.people.find({age: {$gt: 30}}, {_id: 0, firstName: 1, role: {$slice: -1}})
 ```
 
 </details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+## Update Documents
+
+Here, the three ways to update an existing document:
+
+#### Syntax
+
+```js
+db.myCollection.updateOne(<filter>, <update>, <options>)
+```
+
+```js
+db.myCollection.updateMany(<filter>, <update>, <options>)
+```
+
+```js
+db.myCollection.replaceOne(<filter>, <update>, <options>)
+```
+
+<!-- > **`.find`** can take upto three parameters, but all are optional. If you pass no parameter, it retrieves all the documents in a collection. -->
+
+<!-- prettier-ignore -->
+<!-- > **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br>  -->
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+### Practice Update
+
+<!-- go -->
+
+<!-- ##### **Step-1: To import json file:** -->
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
