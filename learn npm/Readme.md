@@ -24,7 +24,7 @@
                     <li><a href="#step-3-npm-install-process">Step-3: npm Install Process</a></li>
                     <li><a href="#step-4-npm-update-and-uninstall">Step-4: npm Update and Uninstall</a></li>
                 </ul>
-                <li><a href="#package-json-script-field">Package.json Script Field</a></li>
+                <li><a href="#packagejson-script-field">Package.json Script Field</a></li>
                 <li><a href="#what-about-npx">What About npx</a></li>
             </ul>
         </li>
