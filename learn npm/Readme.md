@@ -19,10 +19,10 @@
             <ul>
                 <li><a href="#basic-npm-commands">Basic npm Commands</a></li>
                 <ul>
-                    <li><a href="#">Step-1: Command Warm-Ups</a></li>
-                    <li><a href="#">Step-2: Making package.json File</a></li>
-                    <li><a href="#">Step-3: npm Install Process</a></li>
-                    <li><a href="#">Step-4: npm Update and Uninstall</a></li>
+                    <li><a href="#step-1-command-warm-ups">Step-1: Command Warm-Ups</a></li>
+                    <li><a href="#step-2-making-packagejson-file">Step-2: Making package.json File</a></li>
+                    <li><a href="#step-3-npm-install-process">Step-3: npm Install Process</a></li>
+                    <li><a href="#step-4-npm-update-and-uninstall">Step-4: npm Update and Uninstall</a></li>
                 </ul>
             </ul>
         </li>
