@@ -1,0 +1,15 @@
+{
+  "name": "learn-npm",
+  "version": "1.0.0",
+  "description": "A descriptive npm learning project that focuses on various npm stuffs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learn",
+    "npm"
+  ],
+  "author": "Mirza Monirul Alam",
+  "license": "ISC"
+}
