@@ -1038,20 +1038,23 @@ Here, the three ways to update an existing document:
 
 ```js
 db.myCollection.updateOne(<filter>, <update>, <options>)
+// only updates the first matched result.
 ```
 
 ```js
 db.myCollection.updateMany(<filter>, <update>, <options>)
+// updates all the matched results.
 ```
 
 ```js
 db.myCollection.replaceOne(<filter>, <update>, <options>)
+// replaces all the fields that matches. (Danger!!)
 ```
 
-<!-- > **`.find`** can take upto three parameters, but all are optional. If you pass no parameter, it retrieves all the documents in a collection. -->
-
 <!-- prettier-ignore -->
-<!-- > **`<query>:`** (optional). The query parameter filters the documents of a collection using query operators. </br>  -->
+> **`<filter>:`** exactly the same process that we do in query section. </br>
+> **`<update>:`** uses some sort of update expression. [See all update operators](https://www.mongodb.com/docs/manual/reference/operator/update/#fields) </br>
+> **`<options>:`** (optional). `upsert` -> When `true`, it creates a new document if no document matches the filter. [See Details](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/#syntax)
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
@@ -1061,7 +1064,119 @@ db.myCollection.replaceOne(<filter>, <update>, <options>)
 
 <!-- go -->
 
-<!-- ##### **Step-1: To import json file:** -->
+##### **Step-1: Using .updateOne({ }, { }):**
+
+<details>
+    <summary>1. Find `isChairman: "Yes"` and update its `age` to 50.</summary>
+
+```js
+db.people.updateOne({ isChairman: "Yes" }, { $set: { age: 50 } });
+```
+
+</details>
+
+<details>
+    <summary>2. Push new role `banker` to `firstName: "Marjorie".</summary>
+
+```js
+db.people.updateOne({ firstName: "Marjorie" }, { $push: { role: "banker" } });
+// `$push` Adds an item to an array. [See all](https://www.mongodb.com/docs/manual/reference/operator/update/#array)
+```
+
+</details>
+
+##### **Step-2: Using .updateMany({ }, { }):**
+
+<details>
+    <summary>3. Filter people who are 25 years or less, and then add `status: "Young"` field.</summary>
+
+```js
+db.people.updateMany({ age: { $lte: 25 } }, { $set: { status: "Young" } });
+```
+
+</details>
+
+##### **Step-3: Using .updateOne({ }, { }, { }):**
+
+<details>
+    <summary>4. Filter `role: "teacher"` and then add `firstName: "Anis", role: "teacher"`. Use `upsert: true` as we have no document before.</summary>
+
+```js
+db.people.updateOne({ role: ["teacher"] }, { $set: { firstName: "Anis", role: ["teacher"] } }, { upsert: true });
+// `upsert` creates new document if there is no document existed before.
+```
+
+</details>
+
+##### **Step-4: Using .replaceOne({ }, { }):**
+
+<details>
+    <summary>5. Filter `firstName: "Anis"` and replace with `firstName: "Adam". You will notice no role field that we have befor. That's why replaceOne is dangerous. It only updates what you pass in the second parameter, remaining or existing fields will get deleted.</summary>
+
+```js
+db.people.replaceOne({ firstName: "Anis" }, { firstName: "Adam" });
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+## Delete Documents
+
+Here, the ways to delete an existing document:
+
+#### Syntax
+
+```css
+db.collection.deleteOne()
+// When no parameter, deletes first document even though multiple documents may exist.
+// When `<filter>` parameter, deletes first matched document.
+```
+
+```css
+db.collection.deleteMany()
+// When no parameter, deletes all  documents.
+// When `<filter>` parameter, deletes all the matched documents.
+```
+
+```css
+db.collection.remove(<query>, <justOne-boolean>)
+// if optional justOne boolean is passed, it removes only one document.
+```
+
+[Read more...](https://www.mongodb.com/docs/manual/reference/delete-methods/#delete-methods)
+
+<div align="right">
+    <b><a href="#mongodb">↥ back to top</a></b>
+</div>
+
+### Practice Update
+
+<!-- go -->
+
+##### **Step-1: Using .deleteOne({ }):**
+
+<details>
+    <summary>1. Find `firstName: "Adam"` and delete.</summary>
+
+```js
+db.people.deleteOne({ firstName: "Adam" });
+```
+
+</details>
+
+##### **Step-2: Using .deleteMany({ }):**
+
+<details>
+    <summary>2. Delete all at once people who are exactly 22 years.</summary>
+
+```js
+db.people.deleteMany({ age: { $eq: 22 } });
+```
+
+</details>
 
 <div align="right">
     <b><a href="#mongodb">↥ back to top</a></b>
