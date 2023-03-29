@@ -8,22 +8,32 @@
 <details open>
     <summary><h2>Table of Contains</h2></summary>
     <ol>
-        <li>
+            <li>
             <a href="#about-styled-components">About Styled Components</a>
-        </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-                <li><a href="#basic-folder-structure">Basic Folder Structure</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#learning-path">Learning Path</a>
-            <ul>
-                <li><a href="#making-simple-styled-components">Making Simple Styled Components</a></li>
-            </ul>
-        </li>
+            </li>
+            <li>
+                <a href="#getting-started">Getting Started</a>
+                <ul>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#basic-folder-structure">Basic Folder Structure</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#learning-path-the-basic-part">Learning Path: The Basic Part</a>
+                <ul>
+                    <li><a href="#making-simple-styled-components">Making Simple Styled Components</a></li>
+                    <li><a href="#styling-components-children">Styling Components Children</a></li>
+                    <li><a href="#using-pseudo-classes-and-pseudo-elements">Using Pseudo-classes and Pseudo-elements</a></li>
+                    <li><a href="#applying-global-styles">Applying Global Styles</a></li>
+                    <li><a href="#adding-wrappers-or-containers">Adding Wrappers Or Containers</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#learning-path-the-intermediate-part">Learning Path: The Intermediate Part</a>
+                <ul>
+                    <li><a href="#making-simple-styled-components">h2</a></li>
+                </ul>
+            </li>
             <li><a href="#conclusion">Conclusion</a></li>
             <li><a href="#author">Author</a></li>
             <li><a href="#contributions">Contributions</a></li>
@@ -100,7 +110,7 @@ project/
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
 
-# Learning Path
+# Learning Path: The Basic Part
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
@@ -161,6 +171,7 @@ const Hero = () => {
 ![image](https://user-images.githubusercontent.com/116225566/228491395-b2525e58-25d8-43b5-a236-3b5b0ca3091b.png)
 
 ```jsx
+// filename: Basic.styled.jsx
 import styled from "styled-components";
 
 const Title = styled.h1`            // creates a `h1` tag 
@@ -191,14 +202,226 @@ export { Title, Subtitle, Text };       // DON'T FORGET TO EXPORT
 ```
 
 ```jsx
+// filename: Hero.jsx
 import { Subtitle, Title, Text } from "../utills/Basic.styled";     // ALSO DON'T FORGET TO IMPORT THIS WHEN YOU USE IT!!!
 ```
 
+**Make this button**
 
+![image](https://user-images.githubusercontent.com/116225566/228509872-08e3e53d-d9d4-4756-900e-7aa0791cd4e1.png)
+
+```jsx
+// filename: Basic.styled.jsx
+const ProfileButton = styled.a`         // makes `a` tag
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  background-color: #f8f804;
+  color: #252525;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 0.25rem;
+  cursor: pointer;
+`;
+
+export { Title, Subtitle, Text, ProfileButton };
+
+```
+```jsx
+// filename: Hero.jsx
+<ProfileButton href="#">Student Profiles</ProfileButton>
+```
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
+
+## Styling Component's Children
+
+Here `img` tag is inside `div` tag. Both `div` and `img` tag can be styled at a time.
+
+```jsx
+const SchoolImage = styled.div`
+  overflow: hidden;
+  border-radius: 0.5rem;
+
+  img {
+    width: 100%;
+  }
+`;
+```
+and use this by the following way:
+
+```jsx
+   <SchoolImage>
+      <img src={SchoolIMG} alt="school" />
+   </SchoolImage>
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Using Pseudo-classes and Pseudo-elements
+
+Let's say, we want to add a hover effect on our button. How can we do it?
+
+```jsx
+const ProfileButton = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  background-color: #f8f804;
+  color: #252525;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+
+
+  // this is the way
+  &:hover,         
+  &:focus-visible {
+    opacity: 0.8;
+    transition: all 1s ease-in-out;
+  }
+`;
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Applying Global Styles
+
+CSS resets and other basic global styles can be applied by using helper function named `createGlobalStyle`. **[See Details...](https://styled-components.com/docs/api#createglobalstyle)**
+
+```jsx
+// filename: Global.styled.jsx
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+    *, ::after,::before{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: 0.05em;
+        font-weight: 400;
+        background-color: aliceblue;
+        color: #474547;
+    }
+
+    h1, h2{
+        margin: 0;
+        letter-spacing: 0.06em;
+    }
+
+    a{
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+`;
+
+export { GlobalStyle };
+```
+
+```jsx
+// filename: App.jsx
+import { GlobalStyle } from "./components/utills/Global.styled";
+
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />           // Applying global styling........
+      <Header />
+      <Hero />
+    </>
+  );
+};
+
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+# Adding Wrappers or Containers
+
+![image](https://user-images.githubusercontent.com/116225566/228528440-f4402125-df71-40cf-857f-8b0fc20e0739.png)
+
+```jsx
+// filename: Containers.styled.jsx
+import styled from "styled-components";
+
+const MainWrapper = styled.div`
+  max-width: 1440px;
+  width: 90%;
+  margin-inline: auto;
+`;
+
+const Card = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+
+  max-width: 1000px;
+  margin-inline: auto;
+`;
+
+const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+`;
+
+export { MainWrapper, Card, Col };
+```
+
+```jsx
+// filename: App.jsx
+ <GlobalStyle />
+ <MainWrapper>
+   <Header />
+   <Hero />
+ </MainWrapper>
+```
+
+```jsx
+// filename: Hero.jsx
+ <Card>
+    <Col>
+       <Title>Welcome To Student Database System.</Title>
+       <Subtitle>One stop service for students</Subtitle>
+       <Text>
+         Lorem ipsum dolor sit amet consectetur minus exercitationem repellendus aut harum est doloribus aperiam!
+         Cupiditate et quasi enim maiores neque?
+       </Text>
+         <ProfileButton href="#">Student Profiles</ProfileButton>
+    </Col>
+    <Col>
+       <SchoolImage>
+         <img src={SchoolIMG} alt="school" />
+         </SchoolImage>
+     </Col>
+ </Card>
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+# Learning Path: The Intermediate Part
+
+
 
 # Conclusion
 
