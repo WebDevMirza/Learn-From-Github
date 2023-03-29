@@ -26,6 +26,7 @@
                     <li><a href="#using-pseudo-classes-and-pseudo-elements">Using Pseudo-classes and Pseudo-elements</a></li>
                     <li><a href="#applying-global-styles">Applying Global Styles</a></li>
                     <li><a href="#adding-wrappers-or-containers">Adding Wrappers Or Containers</a></li>
+                    <li><a href="#media-query-features">Media Query Features</a></li>
                 </ul>
             </li>
             <li>
@@ -411,6 +412,23 @@ export { MainWrapper, Card, Col };
      </Col>
  </Card>
 ```
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Media Query Features
+
+```jsx
+  const Card = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
+`;
+```
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
@@ -522,17 +540,54 @@ const VerticleSpacing = styled.div`
 
 ## Applying `as` Polymorphic Prop
 
+```jsx
+const MainWrapper = styled.main`
+  max-width: 1440px;
+  width: 90%;
+  margin-inline: auto;
+`;
+```
+
+Although the above component indicates a `main`tag, we can set this to a `footer` by the following way:
+
+```jsx
+ <MainWrapper as="footer">          //  using polymorphic props.
+    <Text style={{ textAlign: "center" }}>Student Database System, All rights reserved @ 2023</Text>
+ </MainWrapper>
+```
+
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
 
 ## Applying `attrs`
 
+```jsx
+const Newsletters = styled.input.attrs((props) => {
+  return { type: props.type || "text", size: props.size || undefined };
+})`
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 1px solid black;
+
+  &::placeholder {
+    color: red;
+  }
+`;
+```
+
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
 
-# Learning Path: The Advanced Part (Theming)
+# Learning Path: The Advanced Part
+
+- coming soon
+
+## Theming
+
+## Animations
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
@@ -540,7 +595,7 @@ const VerticleSpacing = styled.div`
 
 # Conclusion
 
-At this point, .............
+All the essential things that need to be known to work with styled components are described. Therefore, now practice and implement the knowledge that you achieved. Use this article as a **cheat sheet.** Best of Luck.
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
