@@ -15,7 +15,7 @@
                 <a href="#getting-started">Getting Started</a>
                 <ul>
                     <li><a href="#installation">Installation</a></li>
-                    <li><a href="#basic-folder-structure">Basic Folder Structure</a></li>
+                    <li><a href="#sample-folder-structure">Sample Folder Structure</a></li>
                 </ul>
             </li>
             <li>
@@ -31,7 +31,17 @@
             <li>
                 <a href="#learning-path-the-intermediate-part">Learning Path: The Intermediate Part</a>
                 <ul>
-                    <li><a href="#making-simple-styled-components">h2</a></li>
+                    <li><a href="#extending-styles">Extending Styles</a></li>
+                    <li><a href="#applying-variables">Applying Variables</a></li>
+                    <li><a href="#applying-props">Applying Props</a></li>
+                    <li><a href="#applying-as-polymorphic-prop">Applying as Polymorphic Prop</a></li>
+                    <li><a href="#applying-attrs">Applying attrs</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#learning-path-the-advanced-part-theming">Learning Path: The Advanced Part (Theming)</a>
+                <ul>
+                    <li><a href="#extending-styles">h2 - Theming</a></li>
                 </ul>
             </li>
             <li><a href="#conclusion">Conclusion</a></li>
@@ -44,31 +54,19 @@
 
 # About Styled Components
 
-npm packages, publishing packages, and managing dependencies.
+Styled Components is a popular library for React applications that allows us to write CSS code in JavaScript files, which can help us better manage the styling of components. With Styled Components, we can define styled components using `tagged template literals`, which provide a way to write CSS code as a string within a JavaScript template literal. 
 
-Overall,
+It provides reusable and maintainable CSS code, in addition to using props. Other css features such as media queries, pseudo-classes, and animations are also available in styled Components. All these features along with global styles, theming, and server-side rendering make Styled Components a powerful tool for building complex and dynamic web applications.
 
-<div align="right">
-    <b><a href="#learn-styled-components">↥ back to top</a></b>
-</div>
-
-## H2
 
 <div align="right">
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
+
 
 # Getting Started
 
-Al
-
-
-```cmd
-npm <command>
-```
-<div align="right">
-    <b><a href="#learn-styled-components">↥ back to top</a></b>
-</div>
+All you need is to install `styled-components` through npm or yarn, and now you are ready to go with `react`.
 
 ## Installation
 
@@ -80,7 +78,7 @@ npm install styled-components
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
 
-## Basic Folder Structure
+## Sample Folder Structure
 
 ```markdown
 project/
@@ -112,9 +110,8 @@ project/
 
 # Learning Path: The Basic Part
 
-<div align="right">
-    <b><a href="#learn-styled-components">↥ back to top</a></b>
-</div>
+In this basic part, it will cover how to add html tag through styled components, how to use children's components along with their pseudo classes and pseudo elements, how to apply global styling, and how to deal with wrapper or containers in css.
+
 
 ## Making Simple Styled Components
 
@@ -352,7 +349,7 @@ const App = () => {
     <b><a href="#learn-styled-components">↥ back to top</a></b>
 </div>
 
-# Adding Wrappers or Containers
+## Adding Wrappers or Containers
 
 ![image](https://user-images.githubusercontent.com/116225566/228528440-f4402125-df71-40cf-857f-8b0fc20e0739.png)
 
@@ -421,7 +418,125 @@ export { MainWrapper, Card, Col };
 
 # Learning Path: The Intermediate Part
 
+In this interdemidate part, it will explain about extended styling, variables, props, polymorphic prop, and attrs features of Styled Components.
 
+## Extending Styles
+
+Let's say, we want to add another button, almost exactly identical to the remaining one but different bg-color. We can use `styled(<remaining-button>)` and thus extend the design by overriding.
+
+```jsx
+const ProfileButton = styled.a`
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  background-color: #f8f804;
+  color: inherit;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: filter 0.5s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    filter: invert(1) brightness(150%);
+    transition: all 0.25s ease-in-out;
+  }
+`;
+
+const EnrollButton = styled(ProfileButton)`     // extends of `ProfileButton` and overrides css properties.
+  background-color: #242222;
+  color: #e7e7e7;
+`;
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Applying Variables
+
+Variables can be used as well.
+
+```jsx
+import styled from "styled-components";
+
+const mediumSpacing = "2rem";
+
+const VerticleSpacing = styled.div`
+  margin-bottom: ${mediumSpacing};
+`;
+
+export { VerticleSpacing };
+```
+
+```jsx
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <MainWrapper>
+        <Header />
+        <VerticleSpacing />     // It is a `div` that holds `2rem` margin-bottom.
+        <Hero />
+      </MainWrapper>
+    </>
+  );
+};
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Applying Props
+
+One of the most powerful feature of styled-components is to use props which is completely unimaginable in normal css. Any javascript evaluated value can be passed as a props, making our dynamic styling easier. 
+
+```jsx
+const mediumSpacing = "2rem";
+
+const VerticleSpacing = styled.div`
+  /* margin-bottom: ${mediumSpacing}; */
+  /* margin-bottom: ${(props) => (props.space ? props.space : mediumSpacing)}; */
+`;
+```
+
+or,
+
+```jsx
+const mediumSpacing = "2rem";
+
+const VerticleSpacing = styled.div`
+  /* margin-bottom: ${mediumSpacing}; */
+  margin-bottom: ${({ space }) => (space ? space : mediumSpacing)};         // by destructuring method !! 
+`;
+```
+
+```jsx
+<VerticleSpacing space="4rem"/>     // It is a `div` that holds `4rem` margin-bottom instead of `2rem` margin-bottom.
+```
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Applying `as` Polymorphic Prop
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+## Applying `attrs`
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
+
+# Learning Path: The Advanced Part (Theming)
+
+<div align="right">
+    <b><a href="#learn-styled-components">↥ back to top</a></b>
+</div>
 
 # Conclusion
 
