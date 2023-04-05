@@ -2,7 +2,7 @@
 
 <div align="center">
     <img src="./assets/styled-components.png" alt="styled components" width="150" height="auto"/>
-    <h1>Welcome to Learn NPM</h1>
+    <h1>Welcome to Learn Styled-Components</h1>
 </div>
 
 <details open>
