@@ -7,6 +7,6 @@
 
 ## Topics Covers
 
-#### [Learn npm Step-by-Step](https://github.com/WebDevMirza/Learn-From-Github/tree/master/lear%20npm#readme "npm practice and learn")
+#### [Learn npm Step-by-Step](https://github.com/WebDevMirza/Learn-From-Github/tree/master/learn%20npm#readme "npm practice and learn")
 #### [Learn Styled-Components Step-by-Step](https://github.com/WebDevMirza/Learn-From-Github/tree/master/learn%20styled%20components#readme "styled components learn")
 #### [Learn MongoDB Step-by-Step](https://github.com/WebDevMirza/Learn-From-Github/tree/master/mongodb#readme "MongoDB practice and learn")
